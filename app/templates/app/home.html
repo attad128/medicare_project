@@ -1,0 +1,35 @@
+{% extends "app/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Medicare</h1>
+    <p class="lead">Your online medical appointment platform</p>
+    <hr class="my-4">
+    <p>Book appointments with doctors easily and manage your healthcare.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg px-4 gap-3">Go to Dashboard</a>
+        {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4 gap-3">Create Account</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <h3>For Patients</h3>
+        <p>Find doctors, book appointments, and manage your medical visits all in one place.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>For Doctors</h3>
+        <p>Manage your schedule, view patient appointments, and streamline your practice.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Safe & Secure</h3>
+        <p>Your data is protected with industry-standard security measures.</p>
+    </div>
+</div>
+{% endblock %}

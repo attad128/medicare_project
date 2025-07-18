@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Ajouter des notes{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Ajouter des notes médicales</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Patient :</strong> {{ appointment.patient.get_full_name }}</p>
+            <p><strong>Date :</strong> {{ appointment.date }}</p>
+            <p><strong>Heure :</strong> {{ appointment.time }}</p>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Enregistrer les notes</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
